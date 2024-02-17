@@ -1,4 +1,3 @@
-namespace PrincessRTFM.AutoMountBGM;
 
 using System;
 
@@ -11,6 +10,7 @@ using Dalamud.Plugin.Services;
 
 using Character = FFXIVClientStructs.FFXIV.Client.Game.Character.Character;
 
+namespace PrincessRTFM.AutoMountBGM;
 public class Plugin: IDalamudPlugin {
 	public string Name { get; } = "AutoMountBGM";
 	public string Command => $"/{this.Name.ToLower()}";
