@@ -13,7 +13,7 @@ using Dalamud.Plugin.Services;
 
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 
-using Lumina.Excel.GeneratedSheets;
+using Lumina.Excel.Sheets;
 
 using Character = FFXIVClientStructs.FFXIV.Client.Game.Character.Character;
 
@@ -69,14 +69,14 @@ public class Plugin: IDalamudPlugin {
 	private static void parallelInit() {
 		Log.Info("Caching BGM track names...");
 		foreach (BGM bgm in GameData.GetExcelSheet<BGM>()!) {
-			bgmNames[(ushort)bgm.RowId] = bgm.File.RawString.Replace("music/", "").Replace("ffxiv/", "");
+			bgmNames[(ushort)bgm.RowId] = bgm.File.ExtractText().Replace("music/", "").Replace("ffxiv/", "");
 		}
 		Log.Info("Caching mount data...");
 		foreach (Mount mount in GameData.GetExcelSheet<Mount>()!) {
-			string name = mount.Singular;
+			string name = mount.Singular.ExtractText();
 			ushort id = (ushort)mount.RowId;
 			if (!string.IsNullOrWhiteSpace(name))
-				mountData[id] = new MountData(id, name, (ushort)mount.RideBGM.Row);
+				mountData[id] = new MountData(id, name, (ushort)mount.RideBGM.RowId);
 		}
 		Log.Info("Alphabetising mount list...");
 		alphabetisedMountData = mountData
