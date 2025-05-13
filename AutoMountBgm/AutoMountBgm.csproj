@@ -1,12 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Dalamud.NET.Sdk/12.0.2">
 	<PropertyGroup>
 		<Product>AutoMountBGM</Product>
-		<Version>2.2.4</Version>
+		<Version>2.2.5</Version>
 		<Description>Automatically enables/disables mount BGM depending on the mount you use</Description>
 		<Copyright>Copyleft VariableVixen 2023</Copyright>
 	</PropertyGroup>
-
-	<Import Project="dalamud.props" />
-
 </Project>
